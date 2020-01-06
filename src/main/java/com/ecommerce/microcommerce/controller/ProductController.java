@@ -8,6 +8,8 @@ import com.ecommerce.microcommerce.Model.Product;
 import java.util.List;
 
 
+
+
 @RestController
 public class ProductController {
     //@Autowired afin que Spring se charge d'en fabriquer une instance. ProductDao a désormais accès à toutes
