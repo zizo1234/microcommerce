@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 //@Repository : cette annotation est appliquée à la classe afin d'indiquer à Spring qu'il s'agit d'une classe qui
 // gère les données,ce qui nous permettra de profiter de certaines fonctionnalités comme les translations des erreurs
 
@@ -36,5 +37,40 @@ public class ProductDaoImpl implements ProductDao {
     @Override
     public void save(Product product) {
         products.add(product);
+    }
+
+
+    @Override
+    public Product addProduct(Product product) {
+        Random random = new Random();
+        int nextId = random.nextInt(1000) + 10;
+
+        product.setId(nextId);
+        products.add(product);
+
+        return product;
+    }
+
+    @Override
+    public void updateProduct(Product product) {
+        for(Product oldProduct : products) {
+            if(oldProduct.getId() == product.getId()) {
+                oldProduct.setMontant(product.getMontant());
+                oldProduct.setProductname(product.getProductname());
+                oldProduct.setTransaction(product.isTransaction());
+            }
+        }
+
+    }
+
+    @Override
+    public void deleteProduct(int id) {
+        for(Product c : products) {
+            if(c.getId() == id) {
+                products.remove(c);
+                break;
+            }
+        }
+
     }
 }
