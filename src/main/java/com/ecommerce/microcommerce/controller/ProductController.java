@@ -16,12 +16,11 @@ import java.util.List;
 
 @RestController
 public class ProductController {
-    //@Autowired afin que Spring se charge d'en fabriquer une instance. ProductDao a désormais accès à toutes
-    // les méthodes que nous avons définies
+
     @Autowired
     private ProductDao productDao;
 
-    //@RequestMapping(value="/Produitss", method= RequestMethod.GET)
+
     @GetMapping("/Produitss")
     public String listeProduitss() {
         return "Un exemple de produit";
@@ -79,7 +78,7 @@ public class ProductController {
     }
 
 
-    @DeleteMapping("/customer/{customerId}")
+    @DeleteMapping("/customer/{productId}")
     public ResponseEntity<Product> deleteProduct(@PathVariable int productId){
         Product c = productDao.findById(productId);
 
