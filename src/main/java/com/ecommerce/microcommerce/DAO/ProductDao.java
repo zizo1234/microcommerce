@@ -5,11 +5,8 @@ import java.util.List;
 
 public interface ProductDao {
     public List<Product>findAll();
-    public Product findById(int id);
-    public void save(Product product);
-
+    public Product findById(Long id);
     public Product addProduct(Product product);
     public void updateProduct(Product product);
-
-    public void deleteProduct(int id);
+     public void deleteP (Long id);
 }

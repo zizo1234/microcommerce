@@ -1,7 +1,15 @@
 package com.ecommerce.microcommerce.Model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Product {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private boolean transaction;
     private  float montant;
     private String productname;
@@ -9,11 +17,11 @@ public class Product {
     private int clientid;
     private float productpriceunity;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -65,7 +73,7 @@ public class Product {
         this.productpriceunity = productpriceunity;
     }
 
-    public Product(int id, boolean transaction, float montant, String productname, int quantite, int clientid, float productpriceunity) {
+    public Product(Long id, boolean transaction, float montant, String productname, int quantite, int clientid, float productpriceunity) {
         this.id = id;
         this.transaction = transaction;
         this.montant = montant;

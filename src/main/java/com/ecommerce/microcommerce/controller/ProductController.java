@@ -28,7 +28,7 @@ public class ProductController {
 
 
     @GetMapping(value = "/Produitss/{id}")
-    public String afficherUnProdui(@PathVariable int id) {
+    public String afficherUnProdui(@PathVariable Long id) {
         return "Vous avez demandé un produit avec l'id  " + id;
     }
 
@@ -40,7 +40,7 @@ public class ProductController {
 
     //Récupérer un produit par son Id
     @GetMapping(value = "/Produits/{id}")
-    public Product afficherUnProduit(@PathVariable int id) {
+    public Product afficherUnProduit(@PathVariable Long id) {
         return productDao.findById(id);
     }
 
@@ -69,8 +69,7 @@ public class ProductController {
             return new ResponseEntity<Product>(HttpStatus.NOT_FOUND);
         }
 
-        c.setMontant(customer.getMontant());
-        c.setProductname(customer.getProductname());
+
         c.setTransaction(customer.isTransaction());
 
         productDao.updateProduct(c);
@@ -79,14 +78,14 @@ public class ProductController {
 
 
     @DeleteMapping("/customer/{productId}")
-    public ResponseEntity<Product> deleteProduct(@PathVariable int productId){
+    public ResponseEntity<Product> deleteProduct(@PathVariable Long productId){
         Product c = productDao.findById(productId);
 
         if(c == null) {
             return new ResponseEntity<Product>(HttpStatus.NOT_FOUND);
         }
 
-        productDao.deleteProduct(productId);
+        productDao.deleteP(productId);
         return new ResponseEntity<Product>(HttpStatus.NO_CONTENT);
     }
 
